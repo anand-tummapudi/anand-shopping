@@ -22,4 +22,26 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <build>
+		<finalName>shoppingbackend</finalName>
+		<plugins>
+
+            <!-- Source level should be 1.6 (not Maven default) for Java EE 6 projects -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <!-- When using xml-less approach, need to disable Maven's warning about 
+                missing web.xml -->
+            
+
+        </plugins>
+	</build>
 </project>
