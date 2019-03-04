@@ -6,6 +6,7 @@ import net.art.shopbackend.dto.Category;
 
 public interface CategoryDAO {
 	
-	List<Category> list();
+	List<Category> listCategories();
+	Category get(int id);
 
 }
