@@ -1,28 +1,43 @@
 package net.shop.anandshopping.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import net.art.shopbackend.dao.CategoryDAO;
+import net.art.shopbackend.dto.Category;
 
 @Controller
 public class PageController {
+	
+	@Autowired
+	private CategoryDAO categoryDAO;
 
 	@RequestMapping(value= {"/", "/home", "/index"})
 	public ModelAndView index() {
+		List<Category> categories = new ArrayList<>();
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","Home");
 		mv.addObject("userClickHome",true);
-		
+		categories = categoryDAO.listCategories();
+		mv.addObject("categories",categories);
 		return mv;
 	}
 	
 	@RequestMapping(value= {"/listProducts"})
 	public ModelAndView listProducts() {
+		List<Category> categories = new ArrayList<>();
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","Product List");
 		mv.addObject("userClickList",true);
+		categories = categoryDAO.listCategories();
+		mv.addObject("categories",categories);
+			
 		return mv;
 	}
 	
@@ -42,27 +57,27 @@ public class PageController {
 		return mv;
 	}
 	
-	
-	/*To Demonstrate @Request Param*/
-	
-/*	@RequestMapping(value= "/test")
-	public ModelAndView test(@RequestParam(value="greeting", required=false)String greeting) {
-		if(greeting==null) {
-			greeting="Hi Anand";
-		}
+	/*Methods to Load products based on categories*/
+	@RequestMapping(value="/show/all/products")
+	public ModelAndView showAllProducts() {
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("greeting",greeting);
+		mv.addObject("title","All Products");
+		mv.addObject("categories",categoryDAO.listCategories());
+		mv.addObject("userClickedAllProducts",true);
+	return mv;	
+	}
+	
+	@RequestMapping(value="/show/category/{id}/products")
+	public ModelAndView showCategoryProducts(@PathVariable("id") int id) {
+		ModelAndView mv = new ModelAndView("page");
+		Category category = null;
+		category = categoryDAO.get(id);
+		mv.addObject("title",category.getName());
+		mv.addObject("categories",categoryDAO.listCategories());
+		mv.addObject("category",category);
+		mv.addObject("userClickCategoryProducts",true);
 		return mv;
 	}
-	*/
-	/*TO Demonstrate @PathVariable*/
-/*	@RequestMapping(value= "/test2/{greeting}")
-	public ModelAndView test2(@PathVariable("greeting")String greeting) {
-		if(greeting==null) {
-			greeting="Hi Anand";
-		}
-		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("greeting",greeting);
-		return mv;
-	}*/
+	
+	
 }

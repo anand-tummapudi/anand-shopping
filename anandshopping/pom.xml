@@ -16,13 +16,19 @@
 	<dependencies>
 
 		<!-- Java EE -->
-
+		<dependency>
+			  <groupId>net.art</groupId>
+			  <artifactId>shopbackend</artifactId>
+			  <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 			<version>${javaee.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
 		<!-- Junit -->
 		<dependency>
 			<groupId>junit</groupId>
