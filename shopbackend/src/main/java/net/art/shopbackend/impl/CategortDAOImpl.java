@@ -11,10 +11,12 @@ import net.art.shopbackend.dto.Category;
 @Repository("CategoryDAO")
 public class CategortDAOImpl implements CategoryDAO{
 
-		public static List<Category> categories = new ArrayList<>();
+	public List<Category> categories = null;
 	@Override
 	public List<Category> listCategories() {
 		// TODO Auto-generated method stub
+			categories = new ArrayList<>();
+			
 			Category category = new Category();
 			category.setId(1);
 			category.setName("Television");
@@ -40,7 +42,7 @@ public class CategortDAOImpl implements CategoryDAO{
 			category2.setActive(true);
 			categories.add(category2);
 			
-			System.out.println("Category List Size:"+categories.size());
+			//System.out.println("Category List Size:"+categories.size());
 			
 		return categories;
 	}
