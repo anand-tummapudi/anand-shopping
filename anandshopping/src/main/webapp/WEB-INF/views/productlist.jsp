@@ -23,7 +23,7 @@
 						</script>
 						
 						<ol class="breadcrumb">
-						<li>Category</li>
+						<li>Category : </li>
 						<li>${category.name}</li>
 						</ol>
 					</c:if>
@@ -32,7 +32,12 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<table>
-					
+						<tr>
+							<th></th>
+						</tr>
+						
+						<tr>	
+						</tr>
 					</table>
 				</div>
 			</div>			
