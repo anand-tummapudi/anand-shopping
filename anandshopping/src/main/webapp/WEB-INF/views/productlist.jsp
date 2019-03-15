@@ -33,7 +33,7 @@
 				<div class="col-xs-12">
 					<table>
 						<tr>
-							<th></th>
+							<th>Anand</th>
 						</tr>
 						
 						<tr>	
