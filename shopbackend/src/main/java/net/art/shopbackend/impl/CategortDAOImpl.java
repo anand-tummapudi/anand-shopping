@@ -11,21 +11,23 @@ import net.art.shopbackend.dto.Category;
 @Repository("CategoryDAO")
 public class CategortDAOImpl implements CategoryDAO{
 
-		public static List<Category> categories = new ArrayList<>();
+	public List<Category> categories = null;
 	@Override
 	public List<Category> listCategories() {
 		// TODO Auto-generated method stub
+			categories = new ArrayList<>();
+			
 			Category category = new Category();
-			category.setId(1);
+			category.setId(0);
 			category.setName("Television");
-			category.setDescription("52 inch Smart TV");
+			category.setDescription("Various varieties of televisions");
 			category.setImageUrl("dummyURL");
 			category.setActive(true);
 			
 			categories.add(category);
 			
 			Category category1 = new Category();
-			category1.setId(2);
+			category1.setId(1);
 			category1.setName("Mobile Phone");
 			category1.setDescription("Smartphone with all advanced features");
 			category1.setImageUrl("dummyURL");
@@ -33,14 +35,14 @@ public class CategortDAOImpl implements CategoryDAO{
 			categories.add(category1);
 			
 			Category category2 = new Category();
-			category2.setId(3);
+			category2.setId(2);
 			category2.setName("Laptop");
 			category2.setDescription("HIgh configuration laptop with 8GB RAM and 500GB HDD");
 			category2.setImageUrl("dummyURL");
 			category2.setActive(true);
 			categories.add(category2);
 			
-			System.out.println("Category List Size:"+categories.size());
+			//System.out.println("Category List Size:"+categories.size());
 			
 		return categories;
 	}
